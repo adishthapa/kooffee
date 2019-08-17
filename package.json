@@ -1,7 +1,7 @@
 {
-  "name": "node-handlebars-boilerplate",
+  "name": "uncbootcamp-project02",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
+  "description": "UNC Coding Bootcamp Project 02",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,7 +9,14 @@
     "fix": "eslint --fix .",
     "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adishthapa/UNCBootcamp-Project02.git"
+  },
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adishthapa/UNCBootcamp-Project02/issues"
+  },
   "dependencies": {
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
