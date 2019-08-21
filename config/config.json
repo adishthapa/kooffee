@@ -2,14 +2,14 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "exampledb",
+    "database": "koffeedb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "testdb",
+    "database": "test_koffeedb",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
