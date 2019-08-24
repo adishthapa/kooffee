@@ -3,10 +3,24 @@
   padding: 0;
 }
 
+/* Home page CSS */
+
+#navbar {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#navbar a:hover {
+  background-image: url("../media/background.jpg");
+  color: white;
+}
+
 #container {
   overflow: hidden;
-  height: 300px;
-  background: #edeae8;
+  height: 25vh;
+  background-image: url("../media/background.jpg");
   position: relative;
 }
 
@@ -24,5 +38,32 @@ video {
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5);
 }
+
+#categories {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#categories a:hover {
+  background-image: url("../media/background.jpg");
+  color: white;
+}
+
+#categories .active {
+  background-image: url("../media/background.jpg");
+  color: white;
+}
+
+#options {
+  background-image: url("../media/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 55vh;
+}
+
+/* Admin page CSS */
