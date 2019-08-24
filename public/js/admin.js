@@ -8,6 +8,24 @@ $("#admin-login").on("click", function() {
 });
 
 $(document).ready(function() {
+  $("#admin-drinks").on("click", function() {
+    $("#admin-drinks").addClass("active disabled");
+    $("#admin-foods").removeClass("active disabled");
+    $("#admin-products").removeClass("active disabled");
+  });
+
+  $("#admin-foods").on("click", function() {
+    $("#admin-foods").addClass("active disabled");
+    $("#admin-drinks").removeClass("active disabled");
+    $("#admin-products").removeClass("active disabled");
+  });
+
+  $("#admin-products").on("click", function() {
+    $("#admin-products").addClass("active disabled");
+    $("#admin-drinks").removeClass("active disabled");
+    $("#admin-foods").removeClass("active disabled");
+  });
+
   $(document).on("submit", "#inventory-form", insertInventory);
   function insertInventory(event) {
     event.preventDefault();

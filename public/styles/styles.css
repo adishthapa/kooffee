@@ -58,6 +58,16 @@ video {
   color: white;
 }
 
+#admin-view-inventory a:hover {
+  background-color: black;
+  color: white;
+}
+
+#admin-view-inventory .active {
+  background-color: black;
+  color: white;
+}
+
 #options {
   background-image: url("../media/background.jpg");
   background-position: center;
