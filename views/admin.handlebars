@@ -19,7 +19,9 @@
 <div class="container-fluid text-center" id="admin-view-inventory">
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Welcome to the Admin Page!</h1>
+            <br>
+            <h1>Admin Page</h1>
+            <br>
         </div>
     </div>
     <div class="row">
@@ -35,27 +37,31 @@
     </div>
 </div>
 
-{{!-- <div class="container-fluid text-center">
-    <div class="row">
-        <div class="col-3 p-4" id="admin-items-list-name">
-            <h3 class="pb-3 white-border">Name:</h3>
-            <div id="admin-items-list-name-data">
-            </div>
-        </div>
-        <div class="col-3 p-4 text-center" id="admin-items-list-price">
-            <h3 class="pb-3 white-border">Price:</h3>
-            <div id="items-list-price-data">
-            </div>
-        </div>
-    </div>
-</div> --}}
+<div class="container-fluid text-center" id="admin-items-list">
+    <br>
+    <table class="table table-bordered text-primary">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Small Price</th>
+                <th scope="col">Medium Price</th>
+                <th scope="col">Large Price</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="admin-items-table">
+        </tbody>
+    </table>
+</div>
 
-
-
-<div class="container p-5" id="admin-add-inventory">
+<div class="container-fluid py-5" id="admin-add-inventory">
     <div class="row">
         <div class="col">
             <h3>Add a new Item to the Inventory:</h3>
+            <br>
         </div>
     </div>
     <form id="inventory-form">
@@ -120,6 +126,7 @@
                 </div>
             </div>
         </div>
+        <br />
         <div class="row">
             <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block submit">Submit</button>
