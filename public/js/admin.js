@@ -21,7 +21,16 @@ $(document).ready(function() {
       type: $("#type")
         .val()
         .trim(),
-      price: $("#price")
+      description: $("#description")
+        .val()
+        .trim(),
+      smallPrice: $("#smallPrice")
+        .val()
+        .trim(),
+      mediumPrice: $("#mediumPrice")
+        .val()
+        .trim(),
+      largePrice: $("#largePrice")
         .val()
         .trim(),
       quantity: $("#quantity")
@@ -33,7 +42,10 @@ $(document).ready(function() {
 
     $("#name").val("");
     $("#type").val("");
-    $("#price").val("");
+    $("#description").val("");
+    $("#smallPrice").val("");
+    $("#mediumPrice").val("");
+    $("#largePrice").val("");
     $("#quantity").val("");
   }
 });

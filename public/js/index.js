@@ -1,99 +1,62 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
-
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
-
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
+function getDrinks() {
+  $.get("/api/inventory/drinks", function(data) {
+    for (var i = 0; i < 5; i++) {
+      var name = $("<h5>").text(data[i].name);
+      $("#items-list-name-1-data")
+        .append(name)
+        .append("<br>");
+      var price = $("<h5>").text(
+        "S: $" +
+          data[i].smallPrice +
+          " |" +
+          " M: $" +
+          data[i].smallPrice +
+          " |" +
+          " L: $" +
+          data[i].smallPrice
+      );
+      $("#items-list-price-1-data")
+        .append(price)
+        .append("<br>");
+      console.log(data);
+    }
+    for (var i = 5; i < 10; i++) {
+      var name = $("<h5>").text(data[i].name);
+      $("#items-list-name-2-data")
+        .append(name)
+        .append("<br>");
+      var price = $("<h5>").text("$" + data[i].price);
+      $("#items-list-price-2-data")
+        .append(price)
+        .append("<br>");
+      console.log(data);
+    }
   });
-};
+}
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
+getDrinks();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+$("#drinks").on("click", function() {
+  $("#drinks").addClass("active disabled");
+  $("#foods").removeClass("active disabled");
+  $("#products").removeClass("active disabled");
+  $("#items-list-name-1-data").empty();
+  $("#items-list-price-1-data").empty();
+  getDrinks();
+});
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+$("#foods").on("click", function() {
+  $("#foods").addClass("active disabled");
+  $("#drinks").removeClass("active disabled");
+  $("#products").removeClass("active disabled");
+  $("#items-list-name-1-data").empty();
+  $("#items-list-price-1-data").empty();
+});
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$("#products").on("click", function() {
+  $("#products").addClass("active disabled");
+  $("#drinks").removeClass("active disabled");
+  $("#foods").removeClass("active disabled");
+  $("#items-list-name-1-data").empty();
+  $("#items-list-price-1-data").empty();
+});

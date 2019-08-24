@@ -64,6 +64,23 @@ video {
   background-repeat: no-repeat;
   background-size: cover;
   height: 55vh;
+  font-family: "Fredericka the Great", cursive;
+}
+
+#options h3,
+#options h5 {
+  color: white;
 }
 
 /* Admin page CSS */
+#items-list-price-1 {
+  border-right: 2px solid white;
+}
+#items-list-name-2 {
+  border-left: 2px solid white;
+}
+
+.white-border {
+  border-bottom: 2px solid white;
+  margin-bottom: 25px;
+}

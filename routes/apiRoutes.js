@@ -24,6 +24,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/inventory/drinks", function(req, res) {
+    db.Inventory.findAll({
+      where: {
+        category: "Drink"
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
   // POST route for saving a new item to the inventory
   app.post("/api/inventory", function(req, res) {
     console.log(req.body);
@@ -31,7 +41,10 @@ module.exports = function(app) {
       name: req.body.name,
       category: req.body.category,
       type: req.body.type,
-      price: req.body.price,
+      description: req.body.description,
+      smallPrice: req.body.smallPrice,
+      mediumPrice: req.body.mediumPrice,
+      largePrice: req.body.largePrice,
       quantity: req.body.quantity
     }).then(function(dbInventory) {
       res.json(dbInventory);
