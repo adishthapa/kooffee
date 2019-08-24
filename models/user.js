@@ -6,7 +6,8 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    username: DataTypes.STRING
+    username: DataTypes.STRING,
+    administrator: DataTypes.BOOLEAN
   });
   User.associate = function(models) {
     User.hasMany(models.Checkout, {
