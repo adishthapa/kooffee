@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var Inventory = sequelize.define("Inventory", {
     category: {
       type: DataTypes.ENUM(),
-      values: ["drink", "food", "product"]
+      values: ["Drink", "Food", "Product"]
     },
     name: DataTypes.STRING,
     price: DataTypes.DECIMAL(10, 2),

@@ -16,9 +16,10 @@
     </div>
 </div>
 
-<div class="container text-center p-5" id="admin-add-inventory">
+<div class="container p-5" id="admin-add-inventory">
     <div class="row">
         <div class="col">
+            <h1>Add a new Item to the Inventory:</h1>
             <form id="inventory-form">
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -27,9 +28,9 @@
                     <div class="form-group">
                         <label for="category">Select Category:</label>
                         <select class="custom-select" id="category">
-                            <option value="1">drink</option>
-                            <option value="2">food</option>
-                            <option value="3">product</option>
+                            <option value="1">Drink</option>
+                            <option value="2">Food</option>
+                            <option value="3">Product</option>
                         </select>
                     </div>
                     <br />
@@ -42,9 +43,23 @@
                     <label for="quantity">Quantity:</label>
                     <input placeholder="Quantity" type="number" class="form-control" id="quantity">
                     <br />
-                    <button type="submit" class="btn btn-success submit">Submit</button>
+                    <button type="submit" class="btn btn-primary submit">Submit</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid text-center" id="admin-view-inventory">
+    <div class="row" id="categories">
+        <div class="col-4 category">
+            <a class="nav-link active" href="#" id="drinks">Drinks</a>
+        </div>
+        <div class="col-4 category">
+            <a class="nav-link" href="#" id="foods">Foods</a>
+        </div>
+        <div class="col-4 category">
+            <a class="nav-link" href="#" id="products">Products</a>
         </div>
     </div>
 </div>

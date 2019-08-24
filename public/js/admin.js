@@ -1,8 +1,10 @@
 $("#admin-add-inventory").hide();
+$("#admin-view-inventory").hide();
 
 $("#admin-login").on("click", function() {
   $("#admin-home").hide();
   $("#admin-add-inventory").show();
+  $("#admin-view-inventory").show();
 });
 
 $(document).ready(function() {
