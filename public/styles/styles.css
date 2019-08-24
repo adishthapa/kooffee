@@ -3,6 +3,8 @@
   padding: 0;
 }
 
+/* Home page CSS */
+
 #navbar {
   height: 10vh;
   display: flex;
@@ -63,3 +65,5 @@ video {
   background-size: cover;
   height: 55vh;
 }
+
+/* Admin page CSS */
