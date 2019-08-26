@@ -31,6 +31,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/inventory/:id", function(req, res) {
+    db.Inventory.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
   // POST route for saving a new item to the inventory
   app.post("/api/inventory", function(req, res) {
     console.log(req.body);

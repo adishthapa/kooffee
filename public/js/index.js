@@ -182,5 +182,18 @@ $(document).on("click", "#products", function() {
 
 $(document).on("click", ".inventory-item", function() {
   console.log("HELLO WORLD!");
-  $("#modal-inventory").modal();
+  var id = $(this).data("id");
+  $.get("/api/inventory/" + id, function(data) {
+    console.log(data);
+    $("#inventory-id").text(data.name);
+    $("#inventory-description").text(data.description);
+    $("#modal-inventory").modal();
+  });
+});
+
+$("#modal-inventory").on("hidden.bs.modal", function() {
+  $("#inventory-id").empty();
+  $("#inventory-description").empty();
+  $("#modal-quantity").val("");
+  $("#modal-size").prop("selectedIndex", 0);
 });
