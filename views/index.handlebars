@@ -7,7 +7,7 @@
         </div>
 
         <div class="col-2 text-center">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#log-sign"><span>Login
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-login-signup"><span>Login
                     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                     Signup</span></a>
         </div>
@@ -19,84 +19,6 @@
         <source src="/media/coffee.mp4" type="video/mp4">
     </video>
     <div id="overlay"></div>
-    <!-- Modal -->
-    <div class="modal fade" id="log-sign" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div>
-                    <ul class="nav nav-tabs">
-                        <li id="tab1" class="active tab-style login-shadow"><a href="#signin" data-toggle="tab">Log
-                                In</a></li>
-                        <li id="tab2" class="tab-style"><a href="#signup" data-toggle="tab">Sign Up</a></li>
-                    </ul>
-                </div>
-                <div class="modal-body">
-                    <div class="tab-content">
-                        <div class="tab-pane fade active in" id="signin">
-                            <form class="form-horizontal">
-                                <fieldset>
-                                    <!-- Sign In Form -->
-                                    <div class="group">
-                                        <input required="" class="input" type="email" id="login-email"><span
-                                            class="highlight"></span><span class="bar"></span>
-                                        <label class="label" for="login-email">Email</label>
-                                    </div>
-                                    <div class="group">
-                                        <input required="" class="input" type="password" id="login-password"><span
-                                            class="highlight"></span><span class="bar"></span>
-                                        <label class="label" for="login-password">Password</label>
-                                    </div>
-                                    <!-- Button -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="signin"></label>
-                                        <div class="controls">
-                                            <button id="signin" name="signin" class="btn btn-primary btn-block">Log
-                                                In</button>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade" id="signup">
-                            <form class="form-horizontal">
-                                <fieldset>
-                                    <!-- Sign Up Form -->
-                                    <div class="group">
-                                        <input required="" class="input" type="text" id="signup-firstname"><span
-                                            class="highlight"></span><span class="bar"></span>
-                                        <label class="label" for="signup-firstname">First Name</label>
-                                    </div>
-                                    <div class="group">
-                                        <input required="" class="input" type="text" id="signup-lastname"><span
-                                            class="highlight"></span><span class="bar"></span>
-                                        <label class="label" for="signup-lastname">Last Name</label>
-                                    </div>
-                                    <div class="group">
-                                        <input required="" class="input" type="email" id="signup-email"><span
-                                            class="highlight"></span><span class="bar"></span>
-                                        <label class="label" for="signup-email">Email</label>
-                                    </div>
-                                    <div class="group">
-                                        <input required="" class="input" type="password" id="signup-password"><span
-                                            class="highlight"></span><span class="bar"></span>
-                                        <label class="label" for="signup-password">Password</label>
-                                    </div>
-                                    <!-- Button -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="confirmsignup"></label>
-                                        <div class="controls">
-                                            <button id="confirmsignup" name="confirmsignup"
-                                                class="btn btn-primary btn-block">Sign Up</button>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="container-fluid text-center">
@@ -133,6 +55,130 @@
         <div class="col-3 p-4" id="items-list-price-2">
             <h3 class="pb-3 white-border">Price:</h3>
             <div id="items-list-price-2-data">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Signup/Login -->
+<div class="modal fade" id="modal-login-signup" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div>
+                <ul class="nav nav-tabs">
+                    <li id="tab1" class="active tab-style login-shadow"><a href="#signin" data-toggle="tab">Log
+                            In</a></li>
+                    <li id="tab2" class="tab-style"><a href="#signup" data-toggle="tab">Sign Up</a></li>
+                </ul>
+            </div>
+            <div class="modal-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="signin">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <!-- Sign In Form -->
+                                <div class="group">
+                                    <input required="" class="input" type="email" id="login-email"><span
+                                        class="highlight"></span><span class="bar"></span>
+                                    <label class="label" for="login-email">Email</label>
+                                </div>
+                                <div class="group">
+                                    <input required="" class="input" type="password" id="login-password"><span
+                                        class="highlight"></span><span class="bar"></span>
+                                    <label class="label" for="login-password">Password</label>
+                                </div>
+                                <!-- Button -->
+                                <div class="control-group">
+                                    <label class="control-label" for="signin"></label>
+                                    <div class="controls">
+                                        <button id="signin" name="signin" class="btn btn-primary btn-block">Log
+                                            In</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="signup">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <!-- Sign Up Form -->
+                                <div class="group">
+                                    <input required="" class="input" type="text" id="signup-firstname"><span
+                                        class="highlight"></span><span class="bar"></span>
+                                    <label class="label" for="signup-firstname">First Name</label>
+                                </div>
+                                <div class="group">
+                                    <input required="" class="input" type="text" id="signup-lastname"><span
+                                        class="highlight"></span><span class="bar"></span>
+                                    <label class="label" for="signup-lastname">Last Name</label>
+                                </div>
+                                <div class="group">
+                                    <input required="" class="input" type="email" id="signup-email"><span
+                                        class="highlight"></span><span class="bar"></span>
+                                    <label class="label" for="signup-email">Email</label>
+                                </div>
+                                <div class="group">
+                                    <input required="" class="input" type="password" id="signup-password"><span
+                                        class="highlight"></span><span class="bar"></span>
+                                    <label class="label" for="signup-password">Password</label>
+                                </div>
+                                <!-- Button -->
+                                <div class="control-group">
+                                    <label class="control-label" for="confirmsignup"></label>
+                                    <div class="controls">
+                                        <button id="confirmsignup" name="confirmsignup"
+                                            class="btn btn-primary btn-block">Sign Up</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Viewing Items -->
+<div class="modal" id="modal-inventory" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="inventory-id"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <p id="inventory-description">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form id="add-to-cart">
+                    <div class="form-row align-items-center">
+                        <div class="col-4 my-1">
+                            <label class="sr-only" for="quantity">Quantity</label>
+                            <input type="number" class="form-control" id="quantity" placeholder="Quantity">
+                        </div>
+                        <div class="col-4 my-1">
+                            <label class="mr-sm-2 sr-only" for="size">Size</label>
+                            <select class="custom-select mr-sm-2" id="size">
+                                <option value="1">S</option>
+                                <option value="2">M</option>
+                                <option value="3">L</option>
+                            </select>
+                        </div>
+                        <div class="col-4 my-1">
+                            <button type="submit" class="btn btn-chalk">Add to Cart</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

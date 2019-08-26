@@ -58,13 +58,8 @@ video {
   color: white;
 }
 
-#admin-view-inventory a:hover {
-  background-color: black;
-  color: white;
-}
-
-#admin-view-inventory .active {
-  background-color: black;
+.btn-chalk {
+  background-image: url("../media/background.jpg");
   color: white;
 }
 
@@ -95,44 +90,54 @@ video {
   margin-bottom: 25px;
 }
 
+#admin-view-inventory a:hover {
+  background-color: black;
+  color: white;
+}
+
+#admin-view-inventory .active {
+  background-color: black;
+  color: white;
+}
+
 /* Modals CSS */
-.tab-style {
+#modal-login-signup .tab-style {
   font-size: 20px;
   width: 50%;
   background-color: #f2f2f2;
   text-align: center;
 }
-.nav-tabs > li > a {
+#modal-login-signup .nav-tabs > li > a {
   margin-right: 0px;
   color: grey;
 }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:focus,
-.nav-tabs > li.active > a:hover {
+#modal-login-signup .nav-tabs > li.active > a,
+#modal-login-signup .nav-tabs > li.active > a:focus,
+#modal-login-signup .nav-tabs > li.active > a:hover {
   color: grey;
   font-weight: bold;
 }
 
-.login-shadow {
+#modal-login-signup .login-shadow {
   -webkit-box-shadow: 5px -5px 6px 0px rgba(82, 82, 82, 0.52);
   -moz-box-shadow: 5px -5px 6px 0px rgba(82, 82, 82, 0.52);
   box-shadow: 5px -5px 6px 0px rgba(82, 82, 82, 0.52);
   z-index: 1;
 }
 
-.signup-shadow {
+#modal-login-signup .signup-shadow {
   -webkit-box-shadow: -5px 0px 6px 0px rgba(82, 82, 82, 0.52);
   -moz-box-shadow: -5px -5px 6px 0px rgba(82, 82, 82, 0.52);
   box-shadow: -5px 0px 6px 0px rgba(82, 82, 82, 0.52);
 }
 
-.group {
+#modal-login-signup .group {
   position: relative;
   margin-top: 30px;
 }
 
-.input {
+#modal-login-signup .input {
   font-size: 18px;
   padding: 10px 10px 10px 5px;
   -webkit-appearance: none;
@@ -145,11 +150,11 @@ video {
   border-bottom: 1px solid #757575;
 }
 
-.input:focus {
+#modal-login-signup .input:focus {
   outline: none;
 }
 
-.label {
+#modal-login-signup .label {
   color: #757575;
   font-size: 18px;
   font-weight: normal;
@@ -160,22 +165,22 @@ video {
   transition: all 0.2s ease;
 }
 
-.input:focus ~ .label,
-.input.used ~ .label {
+#modal-login-signup .input:focus ~ .label,
+#modal-login-signup .input.used ~ .label {
   top: -20px;
   transform: scale(0.75);
   left: -15px;
   color: white;
 }
 
-.bar {
+#modal-login-signup .bar {
   position: relative;
   display: block;
   width: 100%;
 }
 
-.bar:before,
-.bar:after {
+#modal-login-signup .bar:before,
+#modal-login-signup .bar:after {
   content: "";
   height: 2px;
   width: 0;
@@ -185,20 +190,20 @@ video {
   transition: all 0.2s ease;
 }
 
-.bar:before {
+#modal-login-signup .bar:before {
   left: 50%;
 }
 
-.bar:after {
+#modal-login-signup .bar:after {
   right: 50%;
 }
 
-.input:focus ~ .bar:before,
-.input:focus ~ .bar:after {
+#modal-login-signup .input:focus ~ .bar:before,
+#modal-login-signup .input:focus ~ .bar:after {
   width: 50%;
 }
 
-.highlight {
+#modal-login-signup .highlight {
   position: absolute;
   height: 60%;
   width: 100px;
@@ -208,29 +213,29 @@ video {
   opacity: 0.5;
 }
 
-.input:focus ~ .highlight {
+#modal-login-signup .input:focus ~ .highlight {
   animation: inputHighlighter 0.3s ease;
 }
 
 @media screen and (max-width: 767px) and (min-width: 576px) {
-  #log-sign {
+  #modal-login-signup #log-sign {
     margin-left: 20%;
     margin-right: 20%;
   }
 }
 
 @media screen and (min-width: 768px) {
-  #log-sign .modal-dialog {
+  #modal-login-signup #log-sign .modal-dialog {
     width: 500px;
   }
 
-  .modal-body {
+  #modal-login-signup .modal-body {
     padding-left: 50px;
     padding-right: 50px;
   }
 }
 
-.modal-body {
+#modal-login-signup .modal-body {
   background-image: url("https://images.pexels.com/photos/1235706/pexels-photo-1235706.jpeg?cs=srgb&dl=blurred-background-brewed-coffee-caffeine-1235706.jpg&fm=jpg");
   background-size: cover;
   z-index: 4;
