@@ -6,11 +6,10 @@
             </span>
         </div>
 
-        <div class="col-2 text-center">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-login-signup"><span>Login
-                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                    Signup</span></a>
+        <div class="col-2 text-center" id="accounts-nav">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-login-signup"><span>Account</span></a>
         </div>
+
     </div>
 </div>
 
@@ -74,7 +73,7 @@
             <div class="modal-body">
                 <div class="tab-content">
                     <div class="tab-pane fade active in" id="signin">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" id="signin-form">
                             <fieldset>
                                 <!-- Sign In Form -->
                                 <div class="group">
@@ -99,7 +98,7 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="signup">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" id="signup-form">
                             <fieldset>
                                 <!-- Sign Up Form -->
                                 <div class="group">
@@ -124,10 +123,11 @@
                                 </div>
                                 <!-- Button -->
                                 <div class="control-group">
-                                    <label class="control-label" for="confirmsignup"></label>
+                                    <label class="control-label" for="signup-btn"></label>
                                     <div class="controls">
-                                        <button id="confirmsignup" name="confirmsignup"
-                                            class="btn btn-primary btn-block">Sign Up</button>
+                                        <button type="submit" id="signup-btn" name="signup-btn"
+                                            class="btn btn-primary btn-block">Sign
+                                            Up</button>
                                     </div>
                                 </div>
                             </fieldset>
@@ -169,9 +169,9 @@
                         <div class="col-4 my-1">
                             <label class="mr-sm-2 sr-only" for="modal-size">Size</label>
                             <select class="custom-select mr-sm-2" id="modal-size">
-                                <option value="1">S</option>
-                                <option value="2">M</option>
-                                <option value="3">L</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
                             </select>
                         </div>
                         <div class="col-4 my-1">

@@ -41,7 +41,6 @@ module.exports = function(app) {
     });
   });
 
-  // POST route for saving a new item to the inventory
   app.post("/api/inventory", function(req, res) {
     console.log(req.body);
     db.Inventory.create({
@@ -55,6 +54,18 @@ module.exports = function(app) {
       quantity: req.body.quantity
     }).then(function(dbInventory) {
       res.json(dbInventory);
+    });
+  });
+
+  app.post("/api/user", function(req, res) {
+    console.log(req.body);
+    db.User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password
+    }).then(function(dbUser) {
+      res.json(dbUser);
     });
   });
 };

@@ -1,3 +1,28 @@
+var loginStatus = JSON.parse(localStorage.getItem("loginStatus"));
+var user = JSON.parse(localStorage.getItem("user"));
+var admin = JSON.parse(localStorage.getItem("admin"));
+
+function reset() {
+  if (loginStatus) {
+    $("#accounts-nav").hide();
+    $("#navbar").append(
+      "<div class='col-1 text-center' id='cart-nav'>" +
+        "<a class='nav-link' href='#' data-toggle='modal' data-target='#modal-cart'><span>Cart</span></a>" +
+        "</div>" +
+        "<div class='col-1 text-center' id='signout-nav'>" +
+        "<a class='nav-link' href='#' id='signout-submit'><span>Signout</span></a>" +
+        "</div>"
+    );
+  }
+}
+
+reset();
+
+$(document).on("click", "#signout-submit", function() {
+  localStorage.clear();
+  window.location.reload();
+});
+
 function getDrinks() {
   $.get("/api/inventory/drinks", function(data) {
     for (var i = 0; i < 5; i++) {
@@ -197,3 +222,29 @@ $("#modal-inventory").on("hidden.bs.modal", function() {
   $("#modal-quantity").val("");
   $("#modal-size").prop("selectedIndex", 0);
 });
+
+$(document).on("submit", "#signup-form", createUser);
+function createUser(event) {
+  event.preventDefault();
+  var user = {
+    firstName: $("#signup-firstname")
+      .val()
+      .trim(),
+    lastName: $("#signup-lastname")
+      .val()
+      .trim(),
+    email: $("#signup-email")
+      .val()
+      .trim(),
+    password: $("#signup-password")
+      .val()
+      .trim()
+  };
+
+  $.post("/api/user", user).then(function(data) {
+    localStorage.setItem("loginStatus", JSON.stringify(true));
+    localStorage.setItem("user", JSON.stringify(data.email));
+    localStorage.setItem("admin", JSON.stringify(false));
+    location.reload();
+  });
+}
