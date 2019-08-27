@@ -57,6 +57,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/user/:email", function(req, res) {
+    db.User.findOne({
+      where: {
+        email: req.params.email
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
   app.post("/api/user", function(req, res) {
     console.log(req.body);
     db.User.create({

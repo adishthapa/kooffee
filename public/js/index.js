@@ -248,3 +248,31 @@ function createUser(event) {
     location.reload();
   });
 }
+
+$(document).on("submit", "#login-form", getUser);
+function getUser(event) {
+  event.preventDefault();
+  var user = {
+    email: $("#login-email")
+      .val()
+      .trim(),
+    password: $("#login-password")
+      .val()
+      .trim()
+  };
+
+  $.get("/api/user/" + user.email, function(data) {
+    if (data) {
+      if (user.password === data.password) {
+        localStorage.setItem("loginStatus", JSON.stringify(true));
+        localStorage.setItem("user", JSON.stringify(data.email));
+        localStorage.setItem("admin", JSON.stringify(false));
+        location.reload();
+      } else {
+        alert("Invalid Login Information.");
+      }
+    } else {
+      alert("Invalid Login Information.");
+    }
+  });
+}
