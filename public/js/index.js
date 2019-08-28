@@ -5,14 +5,30 @@ var admin = JSON.parse(localStorage.getItem("admin"));
 function reset() {
   if (loginStatus) {
     $("#accounts-nav").hide();
-    $("#navbar").append(
-      "<div class='col-1 text-center' id='cart-nav'>" +
-        "<a class='nav-link' href='#' data-toggle='modal' data-target='#modal-cart'><span>Cart</span></a>" +
-        "</div>" +
-        "<div class='col-1 text-center' id='signout-nav'>" +
-        "<a class='nav-link' href='#' id='signout-submit'><span>Signout</span></a>" +
-        "</div>"
-    );
+    if (admin) {
+      console.log("Hello");
+      $("#navbar-brand-col").attr("class", "col-9");
+      $("#navbar").append(
+        "<div class='col-1 text-center' id='admin-nav'>" +
+          "<a class='nav-link' href='/admin' id='admin-submit'><span>Admin</span></a>" +
+          "</div>" +
+          "<div class='col-1 text-center' id='cart-nav'>" +
+          "<a class='nav-link' href='#' data-toggle='modal' data-target='#modal-cart'><span>Cart</span></a>" +
+          "</div>" +
+          "<div class='col-1 text-center' id='signout-nav'>" +
+          "<a class='nav-link' href='#' id='signout-submit'><span>Signout</span></a>" +
+          "</div>"
+      );
+    } else {
+      $("#navbar").append(
+        "<div class='col-1 text-center' id='cart-nav'>" +
+          "<a class='nav-link' href='#' data-toggle='modal' data-target='#modal-cart'><span>Cart</span></a>" +
+          "</div>" +
+          "<div class='col-1 text-center' id='signout-nav'>" +
+          "<a class='nav-link' href='#' id='signout-submit'><span>Signout</span></a>" +
+          "</div>"
+      );
+    }
   }
 }
 
@@ -226,6 +242,12 @@ $("#modal-inventory").on("hidden.bs.modal", function() {
 $(document).on("submit", "#signup-form", createUser);
 function createUser(event) {
   event.preventDefault();
+  var adminBool;
+  if ($("#signup-admin").is(":checked")) {
+    adminBool = true;
+  } else {
+    adminBool = false;
+  }
   var user = {
     firstName: $("#signup-firstname")
       .val()
@@ -238,13 +260,14 @@ function createUser(event) {
       .trim(),
     password: $("#signup-password")
       .val()
-      .trim()
+      .trim(),
+    administrator: adminBool
   };
 
   $.post("/api/user", user).then(function(data) {
     localStorage.setItem("loginStatus", JSON.stringify(true));
     localStorage.setItem("user", JSON.stringify(data.email));
-    localStorage.setItem("admin", JSON.stringify(false));
+    localStorage.setItem("admin", JSON.stringify(data.administrator));
     location.reload();
   });
 }
@@ -266,7 +289,7 @@ function getUser(event) {
       if (user.password === data.password) {
         localStorage.setItem("loginStatus", JSON.stringify(true));
         localStorage.setItem("user", JSON.stringify(data.email));
-        localStorage.setItem("admin", JSON.stringify(false));
+        localStorage.setItem("admin", JSON.stringify(data.administrator));
         location.reload();
       } else {
         alert("Invalid Login Information.");

@@ -1,13 +1,13 @@
-$("#admin-add-inventory").hide();
-$("#admin-view-inventory").hide();
-$("#admin-items-list").hide();
+var admin = JSON.parse(localStorage.getItem("admin"));
 
-$("#admin-login").on("click", function() {
-  $("#admin-home").hide();
-  $("#admin-add-inventory").show();
-  $("#admin-view-inventory").show();
-  $("#admin-items-list").show();
-});
+function reset() {
+  if (!admin) {
+    $("#admin-info").empty();
+    $("#admin-page").append("<h1>You do not have access to this page</h1>");
+  }
+}
+
+reset();
 
 function adminGetDrinks() {
   $.get("/api/inventory/drinks", function(data) {

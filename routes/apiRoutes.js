@@ -73,7 +73,8 @@ module.exports = function(app) {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      administrator: req.body.administrator
     }).then(function(dbUser) {
       res.json(dbUser);
     });
