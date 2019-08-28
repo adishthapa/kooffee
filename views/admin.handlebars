@@ -1,65 +1,122 @@
-<div class="container text-center p-5" id="admin-home">
-    <div class="row">
-        <div class="col">
-            <form>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter username">
+<div id="admin-page">
+    <div id="admin-info">
+        <div class="container-fluid text-center" id="admin-view-inventory">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <br>
+                    <h1><u>Admin Page</u></h1>
+                    <br>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <a class="nav-link active" href="#" id="admin-drinks">Drinks</a>
                 </div>
-                <button type="button" class="btn btn-primary" id="admin-login">Submit</button>
-            </form>
+                <div class="col-4">
+                    <a class="nav-link" href="#" id="admin-foods">Foods</a>
+                </div>
+                <div class="col-4">
+                    <a class="nav-link" href="#" id="admin-products">Products</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<div class="container p-5" id="admin-add-inventory">
-    <div class="row">
-        <div class="col">
-            <h1>Add a new Item to the Inventory:</h1>
+        <div class="container-fluid text-center" id="admin-items-list">
+            <br>
+            <table class="table table-bordered text-primary">
+                <thead>
+                    <tr class="table-primary">
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Small Price</th>
+                        <th scope="col">Medium Price</th>
+                        <th scope="col">Large Price</th>
+                        <th scope="col">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-items-table">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container-fluid py-5" id="admin-add-inventory">
+            <div class="row">
+                <div class="col">
+                    <h3>Add a new Item to the Inventory:</h3>
+                    <br>
+                </div>
+            </div>
             <form id="inventory-form">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input placeholder="Name" type="text" class="form-control" id="name">
-                    <br />
-                    <div class="form-group">
-                        <label for="category">Select Category:</label>
-                        <select class="custom-select" id="category">
-                            <option value="1">Drink</option>
-                            <option value="2">Food</option>
-                            <option value="3">Product</option>
-                        </select>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
                     </div>
-                    <br />
-                    <label for="type">Type:</label>
-                    <input placeholder="Type" type="text" class="form-control" id="type">
-                    <br />
-                    <label for="price">Price:</label>
-                    <input placeholder="Price" type="number" class="form-control" id="price">
-                    <br />
-                    <label for="quantity">Quantity:</label>
-                    <input placeholder="Quantity" type="number" class="form-control" id="quantity">
-                    <br />
-                    <button type="submit" class="btn btn-primary submit">Submit</button>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="category">Select Category:</label>
+                            <select class="custom-select" id="category">
+                                <option value="1">Drink</option>
+                                <option value="2">Food</option>
+                                <option value="3">Product</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="type">Type:</label>
+                            <input type="text" class="form-control" id="type">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+
+                        <div class="form-group">
+                            <label for="smallPrice">Small Price:</label>
+                            <input type="number" class="form-control" id="smallPrice">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="mediumPrice">Medium Price:</label>
+                            <input type="number" class="form-control" id="mediumPrice">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="largePrice">Large Price:</label>
+                            <input type="number" class="form-control" id="largePrice">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity">
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block submit">Submit</button>
+                    </div>
                 </div>
             </form>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid text-center" id="admin-view-inventory">
-    <div class="row" id="categories">
-        <div class="col-4 category">
-            <a class="nav-link active" href="#" id="drinks">Drinks</a>
-        </div>
-        <div class="col-4 category">
-            <a class="nav-link" href="#" id="foods">Foods</a>
-        </div>
-        <div class="col-4 category">
-            <a class="nav-link" href="#" id="products">Products</a>
         </div>
     </div>
 </div>

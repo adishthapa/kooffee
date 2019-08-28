@@ -58,75 +58,86 @@ video {
   color: white;
 }
 
+.btn-chalk {
+  background-image: url("../media/background.jpg");
+  color: white;
+}
+
 #options {
   background-image: url("../media/background.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 55vh;
+  font-family: "Fredericka the Great", cursive;
+}
+
+#options h3,
+#options h5 {
+  color: white;
 }
 
 /* Admin page CSS */
-
-/* modals CSS */
-@import url("https://fonts.googleapis.com/css?family=Raleway");
-
-body {
-  font-family: "Raleway", sans-serif;
+#items-list-price-1 {
+  border-right: 2px solid white;
+}
+#items-list-name-2 {
+  border-left: 2px solid white;
 }
 
-.tab-style {
+.white-border {
+  border-bottom: 2px solid white;
+  margin-bottom: 25px;
+}
+
+#admin-view-inventory a:hover {
+  background-color: black;
+  color: white;
+}
+
+#admin-view-inventory .active {
+  background-color: black;
+  color: white;
+}
+
+/* Modals CSS */
+#modal-login-signup .tab-style {
   font-size: 20px;
   width: 50%;
   background-color: #f2f2f2;
   text-align: center;
 }
-.nav-tabs > li > a {
+#modal-login-signup .nav-tabs > li > a {
   margin-right: 0px;
   color: grey;
 }
 
-/* .group2 {
-  position: relative;
-  margin-top: 16px;
-} */
-
-.btn-block {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 18px;
+#modal-login-signup .nav-tabs > li.active > a,
+#modal-login-signup .nav-tabs > li.active > a:focus,
+#modal-login-signup .nav-tabs > li.active > a:hover {
+  color: grey;
+  font-weight: bold;
 }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:focus,
-.nav-tabs > li.active > a:hover {
-  background-color: #e5ecf4;
-  color: #4a89dc;
-}
-
-.login-shadow {
+#modal-login-signup .login-shadow {
   -webkit-box-shadow: 5px -5px 6px 0px rgba(82, 82, 82, 0.52);
   -moz-box-shadow: 5px -5px 6px 0px rgba(82, 82, 82, 0.52);
   box-shadow: 5px -5px 6px 0px rgba(82, 82, 82, 0.52);
   z-index: 1;
 }
 
-.signup-shadow {
+#modal-login-signup .signup-shadow {
   -webkit-box-shadow: -5px 0px 6px 0px rgba(82, 82, 82, 0.52);
   -moz-box-shadow: -5px -5px 6px 0px rgba(82, 82, 82, 0.52);
   box-shadow: -5px 0px 6px 0px rgba(82, 82, 82, 0.52);
 }
 
-.modal-header {
-  background-color: #e5ecf4;
-}
-
-.group {
+#modal-login-signup .group {
   position: relative;
   margin-top: 30px;
 }
 
-.input {
+#modal-login-signup .input {
   font-size: 18px;
   padding: 10px 10px 10px 5px;
   -webkit-appearance: none;
@@ -139,13 +150,11 @@ body {
   border-bottom: 1px solid #757575;
 }
 
-.input:focus {
+#modal-login-signup .input:focus {
   outline: none;
 }
 
-/* Label */
-
-.label {
+#modal-login-signup .label {
   color: #757575;
   font-size: 18px;
   font-weight: normal;
@@ -156,54 +165,45 @@ body {
   transition: all 0.2s ease;
 }
 
-/* active */
-
-.input:focus ~ .label,
-.input.used ~ .label {
+#modal-login-signup .input:focus ~ .label,
+#modal-login-signup .input.used ~ .label {
   top: -20px;
   transform: scale(0.75);
   left: -15px;
-  /* font-size: 14px; */
-  color: #4a89dc;
+  color: white;
 }
 
-/* Underline */
-
-.bar {
+#modal-login-signup .bar {
   position: relative;
   display: block;
   width: 100%;
 }
 
-.bar:before,
-.bar:after {
+#modal-login-signup .bar:before,
+#modal-login-signup .bar:after {
   content: "";
   height: 2px;
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #4a89dc;
+  background: white;
   transition: all 0.2s ease;
 }
 
-.bar:before {
+#modal-login-signup .bar:before {
   left: 50%;
 }
 
-.bar:after {
+#modal-login-signup .bar:after {
   right: 50%;
 }
 
-/* active */
-
-.input:focus ~ .bar:before,
-.input:focus ~ .bar:after {
+#modal-login-signup .input:focus ~ .bar:before,
+#modal-login-signup .input:focus ~ .bar:after {
   width: 50%;
 }
 
-/* Highlight */
-
-.highlight {
+#modal-login-signup .highlight {
   position: absolute;
   height: 60%;
   width: 100px;
@@ -213,46 +213,31 @@ body {
   opacity: 0.5;
 }
 
-/* active */
-
-.input:focus ~ .highlight {
+#modal-login-signup .input:focus ~ .highlight {
   animation: inputHighlighter 0.3s ease;
 }
 
 @media screen and (max-width: 767px) and (min-width: 576px) {
-  #myModal {
-    margin-left: 20%;
-    margin-right: 20%;
-  }
-
-  #forgot-password {
+  #modal-login-signup #log-sign {
     margin-left: 20%;
     margin-right: 20%;
   }
 }
 
 @media screen and (min-width: 768px) {
-  #myModal .modal-dialog {
+  #modal-login-signup #log-sign .modal-dialog {
     width: 500px;
   }
 
-  #forgot-password .modal-dialog {
-    width: 500px;
-  }
-
-  .modal-body {
+  #modal-login-signup .modal-body {
     padding-left: 50px;
     padding-right: 50px;
   }
 }
 
-.modal-body {
+#modal-login-signup .modal-body {
   background-image: url("https://images.pexels.com/photos/1235706/pexels-photo-1235706.jpeg?cs=srgb&dl=blurred-background-brewed-coffee-caffeine-1235706.jpg&fm=jpg");
   background-size: cover;
   z-index: 4;
   opacity: 0.75;
-}
-
-em {
-  display: none;
 }

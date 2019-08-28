@@ -1,99 +1,301 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var loginStatus = JSON.parse(localStorage.getItem("loginStatus"));
+var user = JSON.parse(localStorage.getItem("user"));
+var admin = JSON.parse(localStorage.getItem("admin"));
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
+function reset() {
+  if (loginStatus) {
+    $("#accounts-nav").hide();
+    if (admin) {
+      console.log("Hello");
+      $("#navbar-brand-col").attr("class", "col-9");
+      $("#navbar").append(
+        "<div class='col-1 text-center' id='admin-nav'>" +
+          "<a class='nav-link' href='/admin' id='admin-submit'><span>Admin</span></a>" +
+          "</div>" +
+          "<div class='col-1 text-center' id='cart-nav'>" +
+          "<a class='nav-link' href='#' data-toggle='modal' data-target='#modal-cart'><span>Cart</span></a>" +
+          "</div>" +
+          "<div class='col-1 text-center' id='signout-nav'>" +
+          "<a class='nav-link' href='#' id='signout-submit'><span>Signout</span></a>" +
+          "</div>"
+      );
+    } else {
+      $("#navbar").append(
+        "<div class='col-1 text-center' id='cart-nav'>" +
+          "<a class='nav-link' href='#' data-toggle='modal' data-target='#modal-cart'><span>Cart</span></a>" +
+          "</div>" +
+          "<div class='col-1 text-center' id='signout-nav'>" +
+          "<a class='nav-link' href='#' id='signout-submit'><span>Signout</span></a>" +
+          "</div>"
+      );
+    }
   }
-};
+}
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+reset();
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+$(document).on("click", "#signout-submit", function() {
+  localStorage.clear();
+  window.location.reload();
+});
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
+function getDrinks() {
+  $.get("/api/inventory/drinks", function(data) {
+    for (var i = 0; i < 5; i++) {
+      if (data[i]) {
+        var link = $("<a>")
+          .attr("data-id", data[i].id)
+          .attr("href", "#modal-inventory")
+          .addClass("inventory-item");
+        var name = $("<h5>").text(data[i].name);
+        link.append(name);
+        $("#items-list-name-1-data")
+          .append(link)
+          .append("<br>");
+        var price = $("<h5>").text(
+          "S: $" +
+            data[i].smallPrice +
+            " |" +
+            " M: $" +
+            data[i].mediumPrice +
+            " |" +
+            " L: $" +
+            data[i].largePrice
+        );
+        $("#items-list-price-1-data")
+          .append(price)
+          .append("<br>");
+      } else {
+        break;
+      }
+    }
+    for (var i = 5; i < 10; i++) {
+      if (data[i]) {
+        var link = $("<a>")
+          .attr("data-id", data[i].id)
+          .attr("href", "#modal-inventory")
+          .addClass("inventory-item");
+        var name = $("<h5>").text(data[i].name);
+        link.append(name);
+        $("#items-list-name-2-data")
+          .append(link)
+          .append("<br>");
+        var price = $("<h5>").text(
+          "S: $" +
+            data[i].smallPrice +
+            " |" +
+            " M: $" +
+            data[i].mediumPrice +
+            " |" +
+            " L: $" +
+            data[i].largePrice
+        );
+        $("#items-list-price-2-data")
+          .append(price)
+          .append("<br>");
+      } else {
+        break;
+      }
+    }
   });
-};
+}
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+function getFoods() {
+  $.get("/api/inventory/foods", function(data) {
+    for (var i = 0; i < 5; i++) {
+      if (data[i]) {
+        var link = $("<a>")
+          .attr("data-id", data[i].id)
+          .attr("href", "#modal-inventory")
+          .addClass("inventory-item");
+        var name = $("<h5>").text(data[i].name);
+        link.append(name);
+        $("#items-list-name-1-data")
+          .append(link)
+          .append("<br>");
+        var price = $("<h5>").text("$" + data[i].mediumPrice);
+        $("#items-list-price-1-data")
+          .append(price)
+          .append("<br>");
+      } else {
+        break;
+      }
+    }
+    for (var i = 5; i < 10; i++) {
+      if (data[i]) {
+        var link = $("<a>")
+          .attr("data-id", data[i].id)
+          .attr("href", "#modal-inventory")
+          .addClass("inventory-item");
+        var name = $("<h5>").text(data[i].name);
+        link.append(name);
+        $("#items-list-name-2-data")
+          .append(link)
+          .append("<br>");
+        var price = $("<h5>").text("$" + data[i].mediumPrice);
+        $("#items-list-price-2-data")
+          .append(price)
+          .append("<br>");
+      } else {
+        break;
+      }
+    }
+  });
+}
+
+function getProducts() {
+  $.get("/api/inventory/products", function(data) {
+    for (var i = 0; i < 5; i++) {
+      if (data[i]) {
+        var link = $("<a>")
+          .attr("data-id", data[i].id)
+          .attr("href", "#modal-inventory")
+          .addClass("inventory-item");
+        var name = $("<h5>").text(data[i].name);
+        link.append(name);
+        $("#items-list-name-1-data")
+          .append(link)
+          .append("<br>");
+        var price = $("<h5>").text("$" + data[i].mediumPrice);
+        $("#items-list-price-1-data")
+          .append(price)
+          .append("<br>");
+      } else {
+        break;
+      }
+    }
+    for (var i = 5; i < 10; i++) {
+      if (data[i]) {
+        var link = $("<a>")
+          .attr("data-id", data[i].id)
+          .attr("href", "#modal-inventory")
+          .addClass("inventory-item");
+        var name = $("<h5>").text(data[i].name);
+        link.append(name);
+        $("#items-list-name-2-data")
+          .append(link)
+          .append("<br>");
+        var price = $("<h5>").text("$" + data[i].mediumPrice);
+        $("#items-list-price-2-data")
+          .append(price)
+          .append("<br>");
+      } else {
+        break;
+      }
+    }
+  });
+}
+
+getDrinks();
+
+$(document).on("click", "#drinks", function() {
+  $("#drinks").addClass("active disabled");
+  $("#foods").removeClass("active disabled");
+  $("#products").removeClass("active disabled");
+  $("#items-list-name-1-data").empty();
+  $("#items-list-price-1-data").empty();
+  $("#items-list-name-2-data").empty();
+  $("#items-list-price-2-data").empty();
+  getDrinks();
+});
+
+$(document).on("click", "#foods", function() {
+  $("#foods").addClass("active disabled");
+  $("#drinks").removeClass("active disabled");
+  $("#products").removeClass("active disabled");
+  $("#items-list-name-1-data").empty();
+  $("#items-list-price-1-data").empty();
+  $("#items-list-name-2-data").empty();
+  $("#items-list-price-2-data").empty();
+  getFoods();
+});
+
+$(document).on("click", "#products", function() {
+  $("#products").addClass("active disabled");
+  $("#drinks").removeClass("active disabled");
+  $("#foods").removeClass("active disabled");
+  $("#items-list-name-1-data").empty();
+  $("#items-list-price-1-data").empty();
+  $("#items-list-name-2-data").empty();
+  $("#items-list-price-2-data").empty();
+  getProducts();
+});
+
+$(document).on("click", ".inventory-item", function() {
+  console.log("HELLO WORLD!");
+  var id = $(this).data("id");
+  $.get("/api/inventory/" + id, function(data) {
+    console.log(data);
+    $("#inventory-id").text(data.name);
+    $("#inventory-description").text(data.description);
+    $("#modal-inventory").modal();
+  });
+});
+
+$("#modal-inventory").on("hidden.bs.modal", function() {
+  $("#inventory-id").empty();
+  $("#inventory-description").empty();
+  $("#modal-quantity").val("");
+  $("#modal-size").prop("selectedIndex", 0);
+});
+
+$(document).on("submit", "#signup-form", createUser);
+function createUser(event) {
   event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var adminBool;
+  if ($("#signup-admin").is(":checked")) {
+    adminBool = true;
+  } else {
+    adminBool = false;
+  }
+  var user = {
+    firstName: $("#signup-firstname")
+      .val()
+      .trim(),
+    lastName: $("#signup-lastname")
+      .val()
+      .trim(),
+    email: $("#signup-email")
+      .val()
+      .trim(),
+    password: $("#signup-password")
+      .val()
+      .trim(),
+    administrator: adminBool
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  $.post("/api/user", user).then(function(data) {
+    localStorage.setItem("loginStatus", JSON.stringify(true));
+    localStorage.setItem("user", JSON.stringify(data.email));
+    localStorage.setItem("admin", JSON.stringify(data.administrator));
+    location.reload();
   });
+}
 
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
+$(document).on("submit", "#login-form", getUser);
+function getUser(event) {
+  event.preventDefault();
+  var user = {
+    email: $("#login-email")
+      .val()
+      .trim(),
+    password: $("#login-password")
+      .val()
+      .trim()
+  };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  $.get("/api/user/" + user.email, function(data) {
+    if (data) {
+      if (user.password === data.password) {
+        localStorage.setItem("loginStatus", JSON.stringify(true));
+        localStorage.setItem("user", JSON.stringify(data.email));
+        localStorage.setItem("admin", JSON.stringify(data.administrator));
+        location.reload();
+      } else {
+        alert("Invalid Login Information.");
+      }
+    } else {
+      alert("Invalid Login Information.");
+    }
   });
-};
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+}

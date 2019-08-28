@@ -4,9 +4,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.ENUM(),
       values: ["Drink", "Food", "Product"]
     },
+    description: DataTypes.TEXT,
+    largePrice: DataTypes.DECIMAL(10, 2),
+    mediumPrice: DataTypes.DECIMAL(10, 2),
     name: DataTypes.STRING,
-    price: DataTypes.DECIMAL(10, 2),
     quantity: DataTypes.INTEGER,
+    smallPrice: DataTypes.DECIMAL(10, 2),
     type: DataTypes.STRING
   });
   Inventory.associate = function(models) {
