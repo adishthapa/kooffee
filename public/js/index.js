@@ -1,5 +1,4 @@
 var loginStatus = JSON.parse(localStorage.getItem("loginStatus"));
-var user = JSON.parse(localStorage.getItem("user"));
 var admin = JSON.parse(localStorage.getItem("admin"));
 
 function reset() {
