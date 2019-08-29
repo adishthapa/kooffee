@@ -19,11 +19,16 @@ function ready() {
     input.addEventListener("change", quantityChanged);
   }
   // Add to Cart Button
-  var addToCartButtons = document.getElementsByClassName("btn-chalk");
-  for (var i = 0; i < addToCartButtons.length; i++) {
-    var button = addToCartButtons[i];
-    button.addEventListener("click", addToCartClicked);
-  }
+  // var addToCartButtons = document.getElementsByClassName("btn-chalk");
+  var addToCartButtons = document.on("submit", "#inventory-form", function(addToCartClicked){
+    for (var i = 0; i < addToCartButtons.length; i++) {
+      var button = addToCartButtons[i];
+      button.addEventListener("click", addToCartClicked);
+  } 
+  // for (var i = 0; i < addToCartButtons.length; i++) {
+  //   var button = addToCartButtons[i];
+  //   button.addEventListener("click", addToCartClicked);
+  // }
   document
     .getElementsByClassName("btn-purchase")[0]
     .addEventListener("click", purchaseClicked);
