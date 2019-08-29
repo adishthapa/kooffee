@@ -151,7 +151,31 @@ $(document).ready(function() {
         .trim()
     };
 
-    $.post("/api/inventory", inventory);
+    var cat = $("#category")
+      .val()
+      .trim();
+    $.post("/api/inventory", inventory).then(function() {
+      console.log(cat);
+      if (cat === "1") {
+        $("#admin-drinks").addClass("active disabled");
+        $("#admin-foods").removeClass("active disabled");
+        $("#admin-products").removeClass("active disabled");
+        $("#admin-items-table").empty();
+        adminGetDrinks();
+      } else if (cat === "2") {
+        $("#admin-foods").addClass("active disabled");
+        $("#admin-drinks").removeClass("active disabled");
+        $("#admin-products").removeClass("active disabled");
+        $("#admin-items-table").empty();
+        adminGetFoods();
+      } else {
+        $("#admin-products").addClass("active disabled");
+        $("#admin-drinks").removeClass("active disabled");
+        $("#admin-foods").removeClass("active disabled");
+        $("#admin-items-table").empty();
+        adminGetProducts();
+      }
+    });
 
     $("#name").val("");
     $("#type").val("");
