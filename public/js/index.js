@@ -33,9 +33,70 @@ function reset() {
 
 reset();
 
+// active;
+// login - shadow;
+
+$(document).on("click", "#tab1", function() {
+  $("#tab2").removeClass("active signup-shadow");
+  $("#tab1").addClass("active login-shadow");
+});
+
+$(document).on("click", "#tab2", function() {
+  $("#tab1").removeClass("active login-shadow");
+  $("#tab2").addClass("active signup-shadow");
+});
+
 $(document).on("click", "#signout-submit", function() {
   localStorage.clear();
   window.location.reload();
+});
+
+$("#login-password").on("input", function() {
+  if ($(this).val().length) {
+    $("#login-password-label").hide();
+  } else {
+    $("#login-password-label").show();
+  }
+});
+
+$("#login-email").on("input", function() {
+  if ($(this).val().length) {
+    $("#login-email-label").hide();
+  } else {
+    $("#login-email-label").show();
+  }
+});
+
+$("#signup-firstname").on("input", function() {
+  if ($(this).val().length) {
+    $("#signup-firstname-label").hide();
+  } else {
+    $("#signup-firstname-label").show();
+  }
+});
+
+$("#signup-lastname").on("input", function() {
+  if ($(this).val().length) {
+    $("#signup-lastname-label").hide();
+  } else {
+    $("#signup-lastname-label").show();
+  }
+});
+
+$("#signup-email").on("input", function() {
+  if ($(this).val().length) {
+    $("#signup-email-label").hide();
+  } else {
+    $("#signup-email-label").show();
+  }
+});
+
+$("#signup-password").on("input", function() {
+  if ($(this).val().length) {
+    $("#signup-password-label").hide();
+  } else {
+    $("#signup-password-label").show();
+  }
 });
 
 function getDrinks() {

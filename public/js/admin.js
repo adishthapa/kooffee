@@ -1,9 +1,16 @@
+var loginStatus = JSON.parse(localStorage.getItem("loginStatus"));
 var admin = JSON.parse(localStorage.getItem("admin"));
 
 function reset() {
-  if (!admin) {
+  if (loginStatus) {
+    if (!admin) {
+      $("#admin-info").empty();
+      $("#admin-page").append(
+        "<br><br><br><div class='container><div class='row'><div class='col-12 text-center'><h1>You do not have access to this page</h1></div></div></div>"
+      );
+    }
+  } else {
     $("#admin-info").empty();
-    $("#admin-page").append("<h1>You do not have access to this page</h1>");
   }
 }
 
