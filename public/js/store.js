@@ -54,9 +54,7 @@ function ready() {
   function addToCartClicked(event) {
     var button = event.target;
     var listItem = button.parentElement.parentElement;
-    var title = listItem.getElementsById(
-      "items-list-name-1-data" || "items-list-name-2-data"
-    )[0].innerText;
+    var title = listItem.getElementsByClassName("inventory-item")[0].innerText;
     var price = listItem.getElementsById(
       "items-list-price-1-data" || "items-list-price-2-data"
     )[0].innerText;
