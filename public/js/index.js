@@ -21,7 +21,7 @@ function reset() {
     } else {
       $("#navbar").append(
         "<div class='col-1 text-center' id='cart-nav'>" +
-          "<a class='nav-link' href='#' data-toggle='modal' data-target='#modal-cart'><span>Cart</span></a>" +
+          "<a class='nav-link' href='/cart' id='cart-submit'><span>Cart</span></a>" +
           "</div>" +
           "<div class='col-1 text-center' id='signout-nav'>" +
           "<a class='nav-link' href='#' id='signout-submit'><span>Signout</span></a>" +
