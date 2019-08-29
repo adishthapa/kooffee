@@ -22,7 +22,7 @@ function ready() {
   var addToCartButtons = document.getElementsByClassName("btn-chalk");
   for (var i = 0; i < addToCartButtons.length; i++) {
     var button = addToCartButtons[i];
-    button.addEventListener("cick", addToCartClicked);
+    button.addEventListener("click", addToCartClicked);
   }
   document
     .getElementsByClassName("btn-purchase")[0]
