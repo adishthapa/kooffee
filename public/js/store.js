@@ -20,21 +20,24 @@ function ready() {
   }
   // Add to Cart Button
   // var addToCartButtons = document.getElementsByClassName("btn-chalk");
-  var addToCartButtons = document.on("submit", "#inventory-form", function(
-    addToCartClicked
-  ) {
-    for (var i = 0; i < addToCartButtons.length; i++) {
-      var button = addToCartButtons[i];
-      button.addEventListener("click", addToCartClicked);
+  var addToCartButtons = document.on(
+    "click",
+    "submit",
+    "#inventory-form",
+    function(addToCartClicked) {
+      for (var i = 0; i < addToCartButtons.length; i++) {
+        var button = addToCartButtons[i];
+        button.addEventListener("click", addToCartClicked);
+      }
+      // for (var i = 0; i < addToCartButtons.length; i++) {
+      //   var button = addToCartButtons[i];
+      //   button.addEventListener("click", addToCartClicked);
+      // }
+      document
+        .getElementsByClassName("btn-purchase")[0]
+        .addEventListener("click", purchaseClicked);
     }
-    // for (var i = 0; i < addToCartButtons.length; i++) {
-    //   var button = addToCartButtons[i];
-    //   button.addEventListener("click", addToCartClicked);
-    // }
-    document
-      .getElementsByClassName("btn-purchase")[0]
-      .addEventListener("click", purchaseClicked);
-  });
+  );
   function purchaseClicked() {
     alert("Thank you for your purchase!");
     var cartItems = document.getElementsByClassName("cart-items")[0];
