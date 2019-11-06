@@ -46,6 +46,7 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
 }
 
 #categories a:hover {
@@ -56,6 +57,12 @@ video {
 #categories .active {
   background-image: url("../media/background.jpg");
   color: white;
+}
+
+#drinks,
+#foods,
+#products {
+  cursor: pointer;
 }
 
 .btn-chalk {
@@ -72,9 +79,22 @@ video {
   font-family: "Fredericka the Great", cursive;
 }
 
-#options h3,
-#options h5 {
+#options h4,
+#options p {
   color: white;
+}
+
+#items-list-name-1 a:hover,
+#items-list-name-2 a:hover {
+  font-weight: 900;
+  text-decoration: none;
+}
+
+#items-list-name-1 p:hover,
+#items-list-name-1 p:active,
+#items-list-name-2 p:hover,
+#items-list-name-2 p:active {
+  color: #6e6554;
 }
 
 /* Admin page CSS */

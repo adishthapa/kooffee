@@ -107,12 +107,12 @@ function getDrinks() {
           .attr("data-id", data[i].id)
           .attr("href", "#modal-inventory")
           .addClass("inventory-item");
-        var name = $("<h5>").text(data[i].name);
+        var name = $("<p>").text(data[i].name);
         link.append(name);
         $("#items-list-name-1-data")
           .append(link)
           .append("<br>");
-        var price = $("<h5>").text(
+        var price = $("<p>").text(
           "S: $" +
             data[i].smallPrice +
             " |" +
@@ -135,12 +135,12 @@ function getDrinks() {
           .attr("data-id", data[i].id)
           .attr("href", "#modal-inventory")
           .addClass("inventory-item");
-        var name = $("<h5>").text(data[i].name);
+        var name = $("<p>").text(data[i].name);
         link.append(name);
         $("#items-list-name-2-data")
           .append(link)
           .append("<br>");
-        var price = $("<h5>").text(
+        var price = $("<p>").text(
           "S: $" +
             data[i].smallPrice +
             " |" +
@@ -168,12 +168,12 @@ function getFoods() {
           .attr("data-id", data[i].id)
           .attr("href", "#modal-inventory")
           .addClass("inventory-item");
-        var name = $("<h5>").text(data[i].name);
+        var name = $("<p>").text(data[i].name);
         link.append(name);
         $("#items-list-name-1-data")
           .append(link)
           .append("<br>");
-        var price = $("<h5>").text("$" + data[i].mediumPrice);
+        var price = $("<p>").text("$" + data[i].mediumPrice);
         $("#items-list-price-1-data")
           .append(price)
           .append("<br>");
@@ -187,12 +187,12 @@ function getFoods() {
           .attr("data-id", data[i].id)
           .attr("href", "#modal-inventory")
           .addClass("inventory-item");
-        var name = $("<h5>").text(data[i].name);
+        var name = $("<p>").text(data[i].name);
         link.append(name);
         $("#items-list-name-2-data")
           .append(link)
           .append("<br>");
-        var price = $("<h5>").text("$" + data[i].mediumPrice);
+        var price = $("<p>").text("$" + data[i].mediumPrice);
         $("#items-list-price-2-data")
           .append(price)
           .append("<br>");
@@ -211,12 +211,12 @@ function getProducts() {
           .attr("data-id", data[i].id)
           .attr("href", "#modal-inventory")
           .addClass("inventory-item");
-        var name = $("<h5>").text(data[i].name);
+        var name = $("<p>").text(data[i].name);
         link.append(name);
         $("#items-list-name-1-data")
           .append(link)
           .append("<br>");
-        var price = $("<h5>").text("$" + data[i].mediumPrice);
+        var price = $("<p>").text("$" + data[i].mediumPrice);
         $("#items-list-price-1-data")
           .append(price)
           .append("<br>");
@@ -230,12 +230,12 @@ function getProducts() {
           .attr("data-id", data[i].id)
           .attr("href", "#modal-inventory")
           .addClass("inventory-item");
-        var name = $("<h5>").text(data[i].name);
+        var name = $("<p>").text(data[i].name);
         link.append(name);
         $("#items-list-name-2-data")
           .append(link)
           .append("<br>");
-        var price = $("<h5>").text("$" + data[i].mediumPrice);
+        var price = $("<p>").text("$" + data[i].mediumPrice);
         $("#items-list-price-2-data")
           .append(price)
           .append("<br>");
