@@ -12,12 +12,5 @@ module.exports = function(sequelize, DataTypes) {
     smallPrice: DataTypes.DECIMAL(10, 2),
     type: DataTypes.STRING
   });
-  Inventory.associate = function(models) {
-    Inventory.belongsTo(models.Checkout, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
   return Inventory;
 };

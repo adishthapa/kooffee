@@ -1,6 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
+  // Inventory Routes
   app.get("/api/inventory/drinks", function(req, res) {
     db.Inventory.findAll({
       where: {
@@ -57,6 +58,7 @@ module.exports = function(app) {
     });
   });
 
+  // User Routes
   app.get("/api/user/:email", function(req, res) {
     db.User.findOne({
       where: {
@@ -77,6 +79,29 @@ module.exports = function(app) {
       administrator: req.body.administrator
     }).then(function(dbUser) {
       res.json(dbUser);
+    });
+  });
+
+  // Checkout Routes
+  app.get("/api/checkout/:userId", function(req, res) {
+    db.Checkout.findAll({
+      where: {
+        UserId: req.params.userId
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.post("/api/checkout", function(req, res) {
+    console.log(req.body);
+    db.Checkout.create({
+      itemName: req.body.itemName,
+      quantity: req.body.quantity,
+      total: req.body.total,
+      UserId: req.body.UserId
+    }).then(function(dbInventory) {
+      res.json(dbInventory);
     });
   });
 };

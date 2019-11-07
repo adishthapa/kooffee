@@ -290,15 +290,9 @@ video {
   width: 100%;
   text-align: center;
 }
-
-.cart-row:last-child {
-  border-bottom: 1px solid black;
+p {
+  color: black;
 }
-
-.cart-row:last-child .cart-column {
-  border: none;
-}
-
 .btn-purchase {
   display: block;
   margin: 40px auto 80px auto;

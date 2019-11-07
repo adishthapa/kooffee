@@ -1,6 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var Checkout = sequelize.define("Checkout", {
-    quantity: DataTypes.INTEGER,
+    itemName: DataTypes.STRING,
+    quantity: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
     total: DataTypes.DECIMAL(10, 2)
   });
   Checkout.associate = function(models) {
@@ -9,7 +13,6 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-    Checkout.hasMany(models.Inventory, {});
   };
   return Checkout;
 };

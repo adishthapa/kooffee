@@ -5,7 +5,6 @@ function reset() {
   if (loginStatus) {
     $("#accounts-nav").hide();
     if (admin) {
-      console.log("Hello");
       $("#navbar-brand-col").attr("class", "col-9");
       $("#navbar").append(
         "<div class='col-1 text-center' id='admin-nav'>" +
@@ -282,11 +281,14 @@ $(document).on("click", "#products", function() {
 });
 
 $(document).on("click", ".inventory-item", function() {
-  console.log("HELLO WORLD!");
   var id = $(this).data("id");
   $.get("/api/inventory/" + id, function(data) {
-    console.log(data);
-    $("#inventory-id").text(data.name);
+    $("#inventory-id")
+      .text(data.name)
+      .attr("data-category", data.category)
+      .attr("data-large-price", data.largePrice)
+      .attr("data-medium-price", data.mediumPrice)
+      .attr("data-small-price", data.smallPrice);
     $("#inventory-description").text(data.description);
     if (data.category !== "Drink") {
       $("#modal-size").hide();
@@ -332,6 +334,7 @@ function createUser(event) {
   $.post("/api/user", user).then(function(data) {
     localStorage.setItem("loginStatus", JSON.stringify(true));
     localStorage.setItem("user", JSON.stringify(data.email));
+    localStorage.setItem("userId", JSON.stringify(data.id));
     localStorage.setItem("admin", JSON.stringify(data.administrator));
     location.reload();
   });
@@ -363,4 +366,47 @@ function getUser(event) {
       alert("Invalid Login Information.");
     }
   });
+}
+
+$(document).on("submit", "#add-to-cart-form", addToCart);
+function addToCart(event) {
+  event.preventDefault();
+  if (loginStatus) {
+    var userId = JSON.parse(localStorage.getItem("userId"));
+    var itemName = $("#inventory-id").text();
+    var quantity = Number(
+      $("#modal-quantity")
+        .val()
+        .trim()
+    );
+    if (quantity === 0) {
+      quantity = 1;
+    }
+    var total =
+      Number($("#inventory-id").data("medium-price")) * Number(quantity);
+    var category = $("#inventory-id").data("category");
+    if (category === "Drink") {
+      var size = $("#modal-size")
+        .val()
+        .trim();
+      itemName += " - " + size;
+      if (size === "L") {
+        total = Number($("#inventory-id").data("large-price")) * quantity;
+      } else if (size === "M") {
+        total = Number($("#inventory-id").data("medium-price")) * quantity;
+      } else {
+        total = Number($("#inventory-id").data("small-price")) * quantity;
+      }
+    }
+    console.log(itemName);
+    var checkout = {
+      itemName: itemName,
+      total: total,
+      quantity: quantity,
+      UserId: userId
+    };
+    $.post("/api/checkout", checkout).then(function() {
+      $("#modal-inventory").modal("toggle");
+    });
+  }
 }
