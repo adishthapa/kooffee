@@ -288,6 +288,11 @@ $(document).on("click", ".inventory-item", function() {
     console.log(data);
     $("#inventory-id").text(data.name);
     $("#inventory-description").text(data.description);
+    if (data.category !== "Drink") {
+      $("#modal-size").hide();
+    } else {
+      $("#modal-size").show();
+    }
     $("#modal-inventory").modal();
   });
 });
