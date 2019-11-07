@@ -38,4 +38,4 @@ A coffee shop application that allows the User to view the shop's menu and order
 
 ## Deployed Link
 
-[https://kooffee.herokuapp.com/](https://kooffee.herokuapp.com/)
+[https://kooffee.herokuapp.com](https://kooffee.herokuapp.com)
